@@ -41,13 +41,13 @@ body::before {
 a {
     text-decoration: none;
     color: black;
-    margin: 0;
+    margin-bottom: 10px;
     padding: 15px;
 }
 
 a:hover {
     transition: 0.5s ease;
-    background-color: lightgray;
+    background-color: rgb(97, 72, 169);
 }
 
 #nav-right {
@@ -55,6 +55,32 @@ a:hover {
     justify-content: space-between;
 }
 
+.welcome-message {
+    margin-top: 20px;
+    margin-left: 1600px;
+    font-weight: bold;
+    color: #520a0a; /* Adjust this to your preferred color */
+}
+
 h1 {
     text-align: center;
 }
+
+.button-mod {
+    padding: 10px 20px;
+    font-size: 16px;
+    color: white;
+    background-color: #2f00ff; /* Customize the button color */
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    width: auto; /* Ensures the button is not full-width */
+    height: 20px; /* Adjust height as needed */
+    margin: 20px; /* Space around the button */
+}
+
+.button-mod:hover {
+    background-color: #0056b3; /* Darker color on hover */
+}
+

@@ -6,6 +6,15 @@
     margin: 0px;
 }
 
+.link-list {
+    list-style: none; /* Remove default list styling */
+    padding: 0; /* Remove padding */
+}
+
+.article-header {
+    margin-bottom: 30px; /* Space between each link */
+}
+
 #moduleHeaderName {
     height: 100%;
     background-color:darkseagreen;
@@ -15,7 +24,14 @@
 }
 
 #content {
-    width: 50%
+    width: 50%; 
+}
+
+#pdf-container {
+    width: 90%; /* Reduce the width if you want it narrower */
+    margin-left:90px; /* This moves the PDF window to the right */
+    height: 600px;
+    overflow-y: auto;
 }
 
 main {
@@ -27,26 +43,14 @@ main {
     width: 25%;
 }
 
+
+
 header {
     height: 25%;
     display: flex;
     flex-direction: column;
 }
 
-/* body {
-    overflow: hidden;
-} */
-
 h4 {
     text-align: center;
 }
-
-/* #chat-bot-side-bar {
-    resize: horizontal;
-} */
-
-
-/* html {
-    width: 100vw; 
-    height: 100vh;
-} */
