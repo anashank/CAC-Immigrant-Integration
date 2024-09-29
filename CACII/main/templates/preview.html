@@ -1,17 +1,8 @@
 {% extends 'moduleHeader.html' %}
 {% load static %}
 
-
-
 {% block content %}
 
-<p>temp module preview</p>
-<a href="{%url 'module'%}?module={{module}}">to module</a>
+<a href="{% url 'module' %}?module={{ module }}" class="button-mod">Click to enter module</a>
 
-
-
-<!-- <h1>{{module}}</h1> -->
-<!-- <embed src="https://drive.google.com/viewerng/
-viewer?embedded=true&url=https://pdfobject.com/pdf/sample.pdf" width="1000" height="1000">
-<iframe id="iframe_pdf" src="{% static 'sample.pdf' %}" style="width:1600px; height:1600px;" frameborder="0"></iframe> -->
 {%endblock%}

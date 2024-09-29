@@ -22,6 +22,11 @@
                     <a href="{% url 'logout' %}" id="logout">Logout</a>
                 </div>
             </nav>
+            {% if user.is_authenticated %}
+            <div class="welcome-message">Welcome, {{ user.username }}!</div>
+            {% else %}
+            <div class="welcome-message">Welcome, Guest!</div>
+            {% endif %}
             {% block extra_head_content %}
             {% endblock %}
         </header>

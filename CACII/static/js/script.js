@@ -7,10 +7,9 @@ let userMessage;
 const createChatLi = (message, className) => {
     const chatLi = document.createElement("li");
     chatLi.classList.add("chat", className);
-    let chatContent = className === "chat-outgoing" ? `<p>${message}</p>` : `<p>${message}</p>`;
-    chatLi.innerHTML = chatContent;
+    chatLi.innerHTML = `<p>${message}</p>`; // Messages wrapped in <p>
     return chatLi;
-}
+};
 
 // Function to get the CSRF token from the cookie
 const getCookie = (name) => {
@@ -26,7 +25,7 @@ const getCookie = (name) => {
         }
     }
     return cookieValue;
-}
+};
 
 const csrftoken = getCookie('csrftoken');
 
@@ -52,7 +51,7 @@ const generateResponse = (incomingChatLi) => {
         })
         .then(data => {
             if (data.message) {
-                messageElement.textContent = data.message;
+                messageElement.innerHTML = data.message; // Update message
             } else {
                 messageElement.classList.add("error");
                 messageElement.textContent = "Oops! Something went wrong. Please try again!";
@@ -65,13 +64,10 @@ const generateResponse = (incomingChatLi) => {
         .finally(() => chatbox.scrollTo(0, chatbox.scrollHeight));
 };
 
-// Limit the output text length to first 3 sentences
-// Process text to handle the bullet points
-
 const handleChat = () => {
     userMessage = chatInput.value.trim();
 
-    // clear the contents of the input box once the send button is clicked
+    // Clear the input box once the send button is clicked
     chatInput.value = "";
     if (!userMessage) {
         return;
@@ -80,22 +76,22 @@ const handleChat = () => {
     chatbox.scrollTo(0, chatbox.scrollHeight);
 
     setTimeout(() => {
-        const incomingChatLi = createChatLi("Thinking...", "chat-incoming")
+        const incomingChatLi = createChatLi("Thinking...", "chat-incoming");
         chatbox.appendChild(incomingChatLi);
         chatbox.scrollTo(0, chatbox.scrollHeight);
         generateResponse(incomingChatLi);
     }, 600);
-}
+};
 
 sendChatBtn.addEventListener("click", handleChat);
 
 function cancel() {
     let chatbotcomplete = document.querySelector(".chatBot");
-    if (chatbotcomplete.style.display != 'none') {
+    if (chatbotcomplete.style.display !== 'none') {
         chatbotcomplete.style.display = "none";
         let lastMsg = document.createElement("p");
         lastMsg.textContent = 'Thanks for using our Chatbot!';
         lastMsg.classList.add('lastMessage');
-        document.body.appendChild(lastMsg)
+        document.body.appendChild(lastMsg);
     }
 }

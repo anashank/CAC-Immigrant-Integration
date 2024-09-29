@@ -6,6 +6,15 @@
     margin: 0px;
 }
 
+.link-list {
+    list-style: none; /* Remove default list styling */
+    padding: 0; /* Remove padding */
+}
+
+.article-header {
+    margin-bottom: 30px; /* Space between each link */
+}
+
 #moduleHeaderName {
     height: 100%;
     background-color: #334536;
@@ -15,7 +24,14 @@
 }
 
 #content {
-    width: 50%;
+    width: 50%; 
+}
+
+#pdf-container {
+    width: 90%; /* Reduce the width if you want it narrower */
+    margin-left:90px; /* This moves the PDF window to the right */
+    height: 600px;
+    overflow-y: auto;
 }
 
 main {
@@ -26,6 +42,8 @@ main {
 .sidebar {
     width: 25%;
 }
+
+
 
 header {
     height: 35%;

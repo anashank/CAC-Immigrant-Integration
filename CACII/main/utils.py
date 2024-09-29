@@ -1,6 +1,7 @@
 import os
 import ssl
 import nltk
+import re
 from nltk.corpus import stopwords
 from nltk.tokenize import word_tokenize
 from langchain_community.document_loaders import PyMuPDFLoader
@@ -78,6 +79,13 @@ def clean_response(response):
     """Removes unwanted text from the LLM response."""
     return response.replace("================================== Ai Message ==================================", "").strip()
 
+def clean_response_pdf(response):
+    # Replace bullet points with <li> tags and wrap everything in <ul>
+    response = re.sub(r'(\*|\-|\•)\s*', '', response)  # Remove bullet point symbols
+    response = re.sub(r'\n+', '</li><li>', response)  # New line to list item
+    response = f'<ul><li>{response.strip()}</li></ul>'  # Wrap in <ul> and ensure no leading/trailing spaces
+    return response
+
 
 def get_response(user_prompt, filename):
     pdf_path = str(BASE_DIR) + '/static/' + filename
@@ -133,7 +141,7 @@ def get_response(user_prompt, filename):
             'input': user_prompt, 
             'previous_conversations': previous_conversations
         })
-        bot_response = response['answer']
+        bot_response = clean_response_pdf(response['answer'])
     else:
         # If no document match, generate a generic LLM response with chat memory
         response = llm.invoke(user_prompt)

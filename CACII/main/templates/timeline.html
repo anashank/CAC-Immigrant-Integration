@@ -6,22 +6,112 @@
         #timeline {
             border-bottom: 3px solid black;
         }
+        .completed {
+            background-color: #4CAF50;
+            color: white;
+        }
+        .incomplete {
+            background-color: #f44336;
+            color: white;
+        }
+        .module-row {
+            display: flex;
+            justify-content: center;
+            margin: 50px 0;
+        }
+        .module-row a {
+            padding: 15px 20px;
+            text-align: center;
+            width: 100%;
+            max-width: 800px; 
+            border-radius: 5px;
+            text-decoration: none;
+            font-size: 16px;
+            display: inline-block; 
+        }
+        .module-row input[type="checkbox"] {
+            margin-right: 75px;
+            align-self: center; 
+        }
+        .module-row label {
+            display: flex;
+            align-items: center;
+            width: 200%;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            margin-right: 75px;
+            border-radius: 5px;
+            cursor: pointer;
+            background-color: #007bff; 
+            color: white;
+            border: none;
+            transition: background-color 0.3s;
+            width: 100%; 
+            max-width: 400px; 
+        }
+        button:hover {
+            background-color: #0056b3; 
+        }
     </style>
+    
     <div id="content-wrapper">
         <section id="description">
             <h2>Welcome to your Personalized Guide!</h2>
             <img src="{% static 'tree.png' %}"id="map">
             <p>Navigating the legal, financial, and social systems of the United States can be tricky.</p>
             <p>However, with the articles provided in this guide and the interactive AI Chat Bot, you can develop a better understanding of the society around you.</p>
-            <p>As you read through the articles, your "timeline" will slowly progress, and each section will check off.</p>
+            <p>As you read through the articles, you can take control of your learning timeline and check off each completed module</p>
         </section>
     
         <section id="content">
-            <a class="curriculum" href="{%url 'preview'%}?module=rights-and-responsibilities">Rights and Responsibilities</a>
-            <a class="curriculum" href="{%url 'preview'%}?module=documentation">Documentation</a>
-            <a class="curriculum" href="{%url 'preview'%}?module=financial">Financial</a>
-            <a class="curriculum" href="{%url 'preview'%}?module=practical-needs">Pratical Needs</a>
-            <a class="curriculum" href="{%url 'preview'%}?module=cultural-integration">Cultural Integration</a>
+            <form method="POST">
+                {% csrf_token %}
+                <div class="module-row">
+                    <input type="checkbox" name="module_complete_rights" id="module_rights" {% if modules.rights.is_complete %}checked{% endif %}>
+                    <label for="module_rights">
+                        <a class="curriculum {% if modules.rights.is_complete %}completed{% else %}incomplete{% endif %}" href="{% url 'preview' %}?module=rights-and-responsibilities">
+                            Rights and Responsibilities
+                        </a>
+                    </label>
+                </div>
+                <div class="module-row">
+                    <input type="checkbox" name="module_complete_documentation" id="module_documentation" {% if modules.documentation.is_complete %}checked{% endif %}>
+                    <label for="module_documentation">
+                        <a class="curriculum {% if modules.documentation.is_complete %}completed{% else %}incomplete{% endif %}" href="{% url 'preview' %}?module=documentation">
+                            Documentation
+                        </a>
+                    </label>
+                </div>
+                <div class="module-row">
+                    <input type="checkbox" name="module_complete_financial" id="module_financial" {% if modules.financial.is_complete %}checked{% endif %}>
+                    <label for="module_financial">
+                        <a class="curriculum {% if modules.financial.is_complete %}completed{% else %}incomplete{% endif %}" href="{% url 'preview' %}?module=financial">
+                            Financial
+                        </a>
+                    </label>
+                </div>
+                <div class="module-row">
+                    <input type="checkbox" name="module_complete_practical" id="module_practical" {% if modules.practical.is_complete %}checked{% endif %}>
+                    <label for="module_practical">
+                        <a class="curriculum {% if modules.practical.is_complete %}completed{% else %}incomplete{% endif %}" href="{% url 'preview' %}?module=practical-needs">
+                            Practical Needs
+                        </a>
+                    </label>
+                </div>
+                <div class="module-row">
+                    <input type="checkbox" name="module_complete_cultural" id="module_cultural" {% if modules.cultural.is_complete %}checked{% endif %}>
+                    <label for="module_cultural">
+                        <a class="curriculum {% if modules.cultural.is_complete %}completed{% else %}incomplete{% endif %}" href="{% url 'preview' %}?module=cultural-integration">
+                            Cultural Integration
+                        </a>
+                    </label>
+                </div>
+                <div class="module-row">
+                    <button type="submit">Save Progress</button>
+                </div>
+            </form>
         </section>
     </div>
 {% endblock %}
