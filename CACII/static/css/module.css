@@ -8,7 +8,7 @@
 
 #moduleHeaderName {
     height: 100%;
-    background-color: darkseagreen;
+    background-color: #334536;
     display: flex;
     justify-content: center;
     flex-direction: column;
@@ -28,7 +28,7 @@ main {
 }
 
 header {
-    height: 25%;
+    height: 35%;
     display: flex;
     flex-direction: column;
     color: #ffffff;
