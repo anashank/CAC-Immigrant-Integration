@@ -2,55 +2,48 @@ body, html {
     margin: 0;
     padding: 0;
     height: 100%;
-    overflow: hidden; /* Prevent vertical scrolling */
+    overflow: hidden;
 }
 
 body {
-    font-family: "Poppins", sans-serif;
-    background-color: #f4f4f4; /* Light background color for better contrast */
-    display: flex;
-    flex-direction: column;
+    font-family: "Open Sans", sans-serif;
+    background-color: #ffffff;
 }
 
 .container {
     display: flex;
-    height: 100vh; /* Full viewport height */
-    width: 100vw; /* Full viewport width */
-    align-items: center; /* Center vertically */
-    justify-content: center; /* Center horizontally */
-    padding: 0; /* Remove any extra padding */
+    height: 100vh;
+    width: 100vw;
+    margin: 0;
+    padding: 0;
 }
 
 .sidebar {
     width: 50%;
     background-color: #144231;
-    background-image: url('../app_bg.jpeg'); /* Adjust the path as needed */
+    background-image: url('/static/bar.png');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    opacity: 0.7; /* Adjust opacity to make the image lighter */
-    z-index: -1; /* Ensure the overlay is behind the content */
     height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: #fff; /* Ensure text visibility if any */
+    margin: 0;
+    padding: 0;
 }
 
 .content {
     flex: 1;
-    padding: 20px;
+    padding: 80px;
     display: flex;
     flex-direction: column;
-    justify-content: center; /* Center the form vertically */
-    max-width: 500px; /* Adjust form width as needed */
-    margin: 0 auto; /* Center the content horizontally */
+    justify-content: center;
+    max-width: 500px;
+    margin: 0;
 }
 
 h2 {
-    font-family: "Poppins", sans-serif;
+    font-family: "Red Hat Display", sans-serif;
     font-weight: normal;
-    font-size: 1.4rem;
+    font-size: 1rem;
     margin: 0 0 20px 0;
     color: #333;
 }
@@ -62,7 +55,7 @@ h2 {
 }
 
 .form-group label {
-    font-size: 0.9rem; 
+    font-size: 0.75rem;
     font-weight: 500;
     color: #333;
     margin-bottom: 5px;
@@ -74,13 +67,13 @@ h2 {
 .form-group input[type="password"],
 .form-group input[type="city"],
 .form-group select {
-    font-size: 0.9rem; 
+    font-size: 0.7rem;
     padding: 10px;
     border: 1px solid #cccccc;
     border-radius: 5px;
-    width: 100%;
+    width: 150%; /* Adjusted to 75% of previous width */
     box-sizing: border-box;
-    background-color: #fff; /* Ensure readability */
+    background-color: #fff;
 }
 
 .form-group input[type="text"]:focus,
@@ -98,14 +91,15 @@ h2 {
     background-color: #144231;
     border: none;
     color: white;
-    padding: 10px 20px;
+    padding: 8px 15px; /* Reduced padding */
     text-align: center;
     display: inline-block;
-    font-size: 1rem; 
+    font-size: 0.9rem; /* Reduced font size */
     cursor: pointer;
     border-radius: 5px;
     margin-top: 10px;
     text-transform: uppercase;
+    font-family: "Open Sans", sans-serif;
 }
 
 .submit-button:hover,
@@ -119,18 +113,16 @@ label {
 
 p {
     margin-top: 25px;
-    font-size: 0.9rem; 
+    font-size: 0.8rem;
 }
 
 @media (max-width: 1200px) {
     h2 {
         font-size: 1.2rem;
     }
-
     .form-group label {
-        font-size: 0.8rem;
+        font-size: 0.6rem;
     }
-
     .form-group input[type="text"],
     .form-group input[type="number"],
     .form-group input[type="email"],
@@ -139,12 +131,10 @@ p {
     .form-group select {
         font-size: 0.8rem;
     }
-
     .submit-button,
     .register-button {
         font-size: 0.8rem;
     }
-
     p {
         font-size: 0.8rem;
     }
@@ -154,82 +144,70 @@ p {
     h2 {
         font-size: 1rem;
     }
-
     .form-group label {
-        font-size: 0.7rem;
+        font-size: 0.8rem;
     }
-
     .form-group input[type="text"],
     .form-group input[type="number"],
     .form-group input[type="email"],
     .form-group input[type="password"],
     .form-group input[type="city"],
     .form-group select {
-        font-size: 0.7rem;
+        font-size: 0.8rem;
     }
-
     .submit-button,
     .register-button {
-        font-size: 0.7rem;
+        font-size: 0.8rem;
     }
-
     p {
-        font-size: 0.7rem;
+        font-size: 0.8rem;
     }
 }
 
 @media (max-width: 600px) {
     h2 {
-        font-size: 0.9rem;
+        font-size: 0.8rem;
     }
-
     .form-group label {
-        font-size: 0.6rem;
+        font-size: 0.8rem;
     }
-
     .form-group input[type="text"],
     .form-group input[type="number"],
     .form-group input[type="email"],
     .form-group input[type="password"],
     .form-group input[type="city"],
     .form-group select {
-        font-size: 0.6rem;
+        font-size: 0.8rem;
     }
-
     .submit-button,
     .register-button {
-        font-size: 0.6rem;
+        font-size: 0.8rem;
     }
-
     p {
-        font-size: 0.6rem;
+        font-size: 0.8rem;
     }
 }
 
 @media (max-width: 400px) {
     h2 {
-        font-size: 0.7rem;
+        font-size: 0.8rem;
     }
-
     .form-group label {
-        font-size: 0.5rem;
+        font-size: 0.8rem;
     }
-
     .form-group input[type="text"],
     .form-group input[type="number"],
     .form-group input[type="email"],
     .form-group input[type="password"],
     .form-group input[type="city"],
     .form-group select {
-        font-size: 0.5rem;
+        font-size: 0.8rem;
     }
-
     .submit-button,
     .register-button {
-        font-size: 0.5rem;
+        font-size: 0.8rem;
     }
-
     p {
-        font-size: 0.5rem;
+        font-size: 0.8rem;
     }
 }

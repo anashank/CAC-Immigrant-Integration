@@ -4,9 +4,8 @@
     <div class="container">
         <div class="sidebar"></div>
         <div class="content">
-            <br>
-            <h2>Register</h2>
-            <form method="post">
+            <h2>Register Here:</h2>
+            <form method="post" action="">
                 {% csrf_token %}
                 <div class="form-group">
                     <label for="username">Username*:</label>
@@ -32,8 +31,9 @@
                     <label for="password2">Repeat Password*:</label>
                     <input type="password" id="password2" name="password2" required>
                 </div>
-                <button type="submit" value="Next" class="submit-button">Register</button>
+                <button type="submit" class="submit-button">Register</button>
             </form>
+            
         </div>
     </div>
 {% endblock %}

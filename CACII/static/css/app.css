@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Red+Hat+Display:wght@300;400;500;600;700;800;900&display=swap');
 
 html, body {
     margin: 0;
@@ -9,8 +9,8 @@ html, body {
 }
 
 body {
-    font-family: "Poppins", sans-serif;
-    overflow: hidden; /* Prevent scrolling caused by the background image */
+    font-family: "Red Hat Display", sans-serif; /* Apply Red Hat font */
+    overflow: hidden;
 }
 
 body::before {
@@ -20,7 +20,7 @@ body::before {
     left: 0;
     width: 100%;
     height: 100%;
-    background-image: url('../app_bg.jpeg'); /* Adjust the path as needed */
+    background-image: url('{% static "bg.png" %}');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -32,8 +32,8 @@ body::before {
     display: flex;
     justify-content: space-between;
     border-bottom: solid 1px black;
-    box-shadow: 0 10px 10px 0 lightgray;
-    background-color: white; /* Optional: to ensure content is readable against the background image */
+    box-shadow: none;
+    background-color: rgb(115, 116, 93);
     z-index: 1000;
     position: relative;
 }
@@ -43,11 +43,12 @@ a {
     color: black;
     margin: 0;
     padding: 15px;
+    font-family: "Red Hat Display", sans-serif; /* Apply Red Hat font to all links */
 }
 
 a:hover {
     transition: 0.5s ease;
-    background-color: lightgray;
+    background-color: rgb(211, 211, 211);
 }
 
 #nav-right {
