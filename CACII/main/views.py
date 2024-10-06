@@ -118,14 +118,17 @@ def profile_view(request):
         form = UserProfileForm(request.POST, instance=user_profile)
         if form.is_valid():
             form.save()
-            return JsonResponse({'success': True, 'message': 'Profile updated successfully!', 'redirect_url': reverse('index')})
+            return JsonResponse({
+                'success': True,
+                'message': 'Profile updated successfully!',
+                'redirect_url': reverse('timeline')  # Change this to the timeline URL
+            })
         else:
             return JsonResponse({'success': False, 'message': 'Form is not valid.'})
     else:
         form = UserProfileForm(instance=user_profile)
 
     return render(request, 'profile_form.html', {'form': form})
-
 
 def preview(request):
     context = {}
@@ -171,6 +174,11 @@ def register_new(request):
         
     return render(request, 'register_new.html', {'form': form})
 
+def title_page(request):
+    return render(request, 'title_page.html') 
+
+def info_page(request):
+    return render(request, 'info_page.html')
 
 def login_view(request):
     if request.method == 'POST':
@@ -179,7 +187,7 @@ def login_view(request):
         user = authenticate(request, username=username, password=password)
         if user is not None:
             login(request, user)
-            return redirect('index')  # Redirect to the main app page
+            return redirect('index') 
         else:
             return HttpResponse("Invalid login credentials.")  # Handle invalid login
     return render(request, 'login.html')  # Display the login page

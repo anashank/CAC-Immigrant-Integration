@@ -5,24 +5,23 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link href="{% static 'css/app.css' %}" rel="stylesheet">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Red+Hat+Display:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
 
         <title>NewRoots</title>
     </head>
     <body>
         <header>
             <nav class="navbar">
-                <a href="{%url 'index'%}" id="home">NewRoots</a>
+                <a>NewRoots</a>
+                <!--<a href="{%url 'index'%}" id="home">NewRoots</a>-->
                 <div id="nav-right">
                     <a href="{%url 'timeline'%}" id="timeline">Timeline</a>
                     <a href="{%url 'profile_view' %}" id="profile">View/Edit Profile</a>
                     <a href="{% url 'logout' %}" id="logout">Logout</a>
                 </div>
             </nav>
-            {% if user.is_authenticated %}
-            <div class="welcome-message">Welcome, {{ user.username }}!</div>
-            {% else %}
-            <div class="welcome-message">Welcome, Guest!</div>
-            {% endif %}
             {% block extra_head_content %}
             {% endblock %}
         </header>

@@ -3,6 +3,7 @@
 {% block content %}
     <div class="container">
         <div class="sidebar">
+            <div class="sidebar-image"></div>
         </div>
 
         <div class="content">
@@ -12,29 +13,29 @@
                 {% csrf_token %}
                 <div class="form-group">
                     <label for="age">Current Age*:</label>
-                    <input type="number" id="age" name="age" value="{{ form.age.value }}" required>
+                    <input type="number" id="age" name="age" required>
                 </div>
 
                 <div class="form-group">
                     <label for="county">County of Residence (ex. Mendocino, Los Angeles, etc)*:</label>
-                    <input type="text" id="county" name="county" value="{{ form.county.value }}" required>
+                    <input type="text" id="county" name="county" required>
                 </div>
 
                 <div class="form-group">
                     <label for="country">Country of Origin*:</label>
-                    <input type="text" id="country" name="country" value="{{ form.country.value }}" required>
+                    <input type="text" id="country" name="country" required>
                 </div>
 
                 <div class="form-group">
                     <label for="income">Income Level*:</label>
                     <select id="income" name="income" required>
                         <option value=""></option>
-                        <option value="lower" {% if form.income.value == 'lower' %}selected{% endif %}>Less than or equal to $30,000</option>
-                        <option value="lower-middle" {% if form.income.value == 'lower-middle' %}selected{% endif %}>$30,001 - $59,000</option>
-                        <option value="middle" {% if form.income.value == 'middle' %}selected{% endif %}>$59,001 - $95,000</option>
-                        <option value="upper-middle" {% if form.income.value == 'upper-middle' %}selected{% endif %}>$95,001 - $155,000</option>
-                        <option value="upper" {% if form.income.value == 'upper' %}selected{% endif %}>Greater than $155,000</option>
-                        <option value="undisclosed" {% if form.income.value == 'undisclosed' %}selected{% endif %}>Choose not to disclose</option>
+                        <option value="lower">Less than or equal to $30,000</option>
+                        <option value="lower-middle">$30,001 - $59,000</option>
+                        <option value="middle">$59,001 - $95,000</option>
+                        <option value="upper-middle">$95,001 - $155,000</option>
+                        <option value="upper">Greater than $155,000</option>
+                        <option value="undisclosed">Choose not to disclose</option>
                     </select>
                 </div>
 
@@ -42,11 +43,11 @@
                     <label for="cstatus">Current US Citizenship Status*:</label>
                     <select id="cstatus" name="cstatus" required>
                         <option value=""></option>
-                        <option value="citizen" {% if form.cstatus.value == 'citizen' %}selected{% endif %}>US Citizens (born in the US/naturalized)</option>
-                        <option value="cond_perm" {% if form.cstatus.value == 'cond_perm' %}selected{% endif %}>Conditional/Permanent Residents (Green Card)</option>
-                        <option value="non-imm" {% if form.cstatus.value == 'non-imm' %}selected{% endif %}>Non-Immigrant Status (F-1 Visa, B1/B2 Visa, or other temporary protected statuses)</option>
-                        <option value="undoc" {% if form.cstatus.value == 'undoc' %}selected{% endif %}>Undocumented</option>
-                        <option value="undisclosed1" {% if form.cstatus.value == 'undisclosed1' %}selected{% endif %}>Choose not to disclose</option>
+                        <option value="citizen">US Citizens (born in the US/naturalized)</option>
+                        <option value="cond_perm">Conditional/Permanent Residents (Green Card)</option>
+                        <option value="non-imm">Non-Immigrant Status (F-1 Visa, B1/B2 Visa, or other temporary protected statuses)</option>
+                        <option value="undoc">Undocumented</option>
+                        <option value="undisclosed1">Choose not to disclose</option>
                     </select>
                 </div>
 
@@ -54,12 +55,12 @@
                     <label for="education">Highest Level of Education*:</label>
                     <select id="education" name="education" required>
                         <option value=""></option>
-                        <option value="high_school" {% if form.education.value == 'high_school' %}selected{% endif %}>High School</option>
-                        <option value="associate" {% if form.education.value == 'associate' %}selected{% endif %}>Associate Degree</option>
-                        <option value="bachelor" {% if form.education.value == 'bachelor' %}selected{% endif %}>Bachelor's Degree</option>
-                        <option value="master" {% if form.education.value == 'master' %}selected{% endif %}>Master's Degree</option>
-                        <option value="doctorate" {% if form.education.value == 'doctorate' %}selected{% endif %}>Doctorate Degree</option>
-                        <option value="other" {% if form.education.value == 'other' %}selected{% endif %}>Other</option>
+                        <option value="high_school">High School</option>
+                        <option value="associate">Associate Degree</option>
+                        <option value="bachelor">Bachelor's Degree</option>
+                        <option value="master">Master's Degree</option>
+                        <option value="doctorate">Doctorate Degree</option>
+                        <option value="other">Other</option>
                     </select>
                 </div>
 
@@ -67,10 +68,10 @@
                     <label for="marital">Marital Status*:</label>
                     <select id="marital" name="marital" required>
                         <option value=""></option>
-                        <option value="single" {% if form.marital.value == 'single' %}selected{% endif %}>Single</option>
-                        <option value="married" {% if form.marital.value == 'married' %}selected{% endif %}>Married</option>
-                        <option value="divorced" {% if form.marital.value == 'divorced' %}selected{% endif %}>Divorced</option>
-                        <option value="widowed" {% if form.marital.value == 'widowed' %}selected{% endif %}>Widowed</option>
+                        <option value="single">Single</option>
+                        <option value="married">Married</option>
+                        <option value="divorced">Divorced</option>
+                        <option value="widowed">Widowed</option>
                     </select>
                 </div>
 
@@ -78,10 +79,10 @@
                     <label for="goals">What are your personal goals with this app?</label>
                     <select id="goals" name="goals">
                         <option value=""></option>
-                        <option value="developing" {% if form.goals.value == 'developing' %}selected{% endif %}>Developing an overall understanding of the United States</option>
-                        <option value="learning" {% if form.goals.value == 'learning' %}selected{% endif %}>Learning which documents are necessary for residence</option>
-                        <option value="understanding" {% if form.goals.value == 'understanding' %}selected{% endif %}>Understanding my legal and civil rights</option>
-                        <option value="other" {% if form.goals.value == 'other' %}selected{% endif %}>Other</option>
+                        <option value="developing">Developing an overall understanding of the United States</option>
+                        <option value="learning">Learning which documents are necessary for residence</option>
+                        <option value="understanding">Understanding my legal and civil rights</option>
+                        <option value="other">Other</option>
                     </select>
                 </div>
 
@@ -95,65 +96,48 @@
                 </div>
             </div>
 
-            <!-- Messages -->
-            <div class="messages mt-3">
-                {% for message in messages %}
-                    <div class="alert alert-success" role="alert">
-                        {{ message }}
-                    </div>
-                {% endfor %}
-            </div>
         </div>
     </div>
 
     <script>
     document.getElementById('profile-form').addEventListener('submit', function(event) {
-    event.preventDefault(); // Prevent default form submission
+        event.preventDefault(); // Prevent default form submission
 
-    // Show the spinner
-    document.getElementById('spinner').classList.remove('d-none');
+        // Show the spinner
+        document.getElementById('spinner').classList.remove('d-none');
 
-    // Get form data
-    const form = document.getElementById('profile-form');
-    const formData = new FormData(form);
+        // Get form data
+        const form = document.getElementById('profile-form');
+        const formData = new FormData(form);
 
-    // Delay form submission
-    setTimeout(() => {
-        fetch(form.action, {
-            method: 'POST',
-            body: formData,
-            headers: {
-                'X-Requested-With': 'XMLHttpRequest',
-                'X-CSRFToken': form.querySelector('[name="csrfmiddlewaretoken"]').value
-            }
-        }).then(response => response.json()) // Expect JSON response
-        .then(data => {
-            if (data.success) {
-                // Update the messages section
-                const messagesDiv = document.querySelector('.messages');
-                messagesDiv.innerHTML = `<div class="alert alert-success" role="alert">${data.message}</div>`;
-                
-                // Hide the spinner
-                document.getElementById('spinner').classList.add('d-none');
-                
-                // Optionally, redirect after a delay
-                setTimeout(() => {
-                    window.location.href = data.redirect_url;
-                }, 2000); // Redirect after 2 seconds
-            } else {
-                // Update the messages section with an error message
-                const messagesDiv = document.querySelector('.messages');
-                messagesDiv.innerHTML = `<div class="alert alert-danger" role="alert">${data.message}</div>`;
-                
-                // Hide the spinner
-                document.getElementById('spinner').classList.add('d-none');
-            }
-        }).catch(error => {
-            console.error('Error:', error);
-            document.getElementById('spinner').classList.add('d-none');
-        });
-    }, 5000); // 5 seconds delay
-});
-
-        </script>
+        // Delay form submission
+        setTimeout(() => {
+            fetch(form.action, {
+                method: 'POST',
+                body: formData,
+                headers: {
+                    'X-Requested-With': 'XMLHttpRequest',
+                    'X-CSRFToken': form.querySelector('[name="csrfmiddlewaretoken"]').value
+                }
+            }).then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.json(); // Expect JSON response
+            }).then(data => {
+                console.log(data); // Log data for debugging
+                if (data.success) {
+                    // Redirect if successful
+                    window.location.href = '/timeline/'; // Update this with your actual timeline URL
+                } else {
+                    // Handle errors
+                    const messagesDiv = document.querySelector('.messages');
+                    messagesDiv.innerHTML = `<div class="alert alert-danger" role="alert">${data.message}</div>`;
+                }
+            }).catch(error => {
+                console.error('Error:', error);
+            });
+        }, 5000); // 5 seconds delay
+    });
+    </script>
 {% endblock %}
