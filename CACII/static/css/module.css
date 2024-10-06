@@ -28,10 +28,14 @@
 }
 
 #pdf-container {
-    width: 90%; /* Reduce the width if you want it narrower */
-    margin-left:90px; /* This moves the PDF window to the right */
-    height: 600px;
+    width: 80%; /* Reduce the width if you want it narrower */
+    margin-left:60px; /* This moves the PDF window to the right */
+    height: 1500px;
     overflow-y: auto;
+}
+
+#pdf-canvas{
+    width: 100%;
 }
 
 main {
