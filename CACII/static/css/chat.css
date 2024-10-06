@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Red+Hat+Display:wght@100;200;300;400;500;600;700;800;900&display=swap');
 
 * {
     box-sizing: border-box;
@@ -7,7 +7,7 @@
 }
 
 body {
-    font-family: "Poppins", sans-serif;
+    font-family: "Red Hat Display", sans-serif;
     font-style: normal;
     background-color: #f7f7f7;
     overflow: hidden;
@@ -21,24 +21,23 @@ body {
 #chatHeader {
     background-color: rgb(115, 116, 93);
     text-align: center;
-    height: 10%;
+    height: 8.1%;
+    width: 100%;
     display: flex;
     justify-content: center;
     overflow: hidden;
-    box-shadow: none; /* Remove shadow */
 }
 
 header h2 {
     color: #ffffff;
-    box-shadow: none; /* Remove shadow */
 }
 
 .chatbox {
     padding: 15px;
     list-style: none;
     height: 65%;
+    width: 60%;
     overflow-y: auto;
-    box-shadow: none; /* Remove shadow */
 }
 
 .chatbox li {
@@ -52,15 +51,15 @@ header h2 {
 }
 
 .chat-outgoing p {
-    background-color: #691eff; /* Blue for sent messages */
-    color: #fff; /* White text */
+    background-color: #691eff;
+    color: black; /* Change text color to black */
     padding: 10px;
     border-radius: 10px;
 }
 
 .chat-incoming p {
-    background-color: rgb(115, 116, 93); /* Green for incoming messages */
-    color: #fff; /* White text */
+    background-color: rgb(115, 116, 93);
+    color: #fff;
     padding: 10px;
     border-radius: 10px;
 }
