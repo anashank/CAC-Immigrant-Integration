@@ -9,7 +9,7 @@ html, body {
 }
 
 body {
-    font-family: "Red Hat Display", sans-serif; /* Apply Red Hat font */
+    font-family: "Red Hat Display", sans-serif;
     overflow: hidden;
 }
 
@@ -24,18 +24,18 @@ body::before {
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    opacity: 0.25; /* Adjust opacity to make the image lighter */
-    z-index: -1; /* Ensure the overlay is behind the content */
+    opacity: 0.25;
+    z-index: -1;
 }
 
 .navbar {
     display: flex;
     justify-content: space-between;
-    border-bottom: solid 1px black;
     box-shadow: none;
     background-color: rgb(115, 116, 93);
     z-index: 1000;
     position: relative;
+    height: 75px;
 }
 
 a {
@@ -43,7 +43,7 @@ a {
     color: black;
     margin-bottom: 10px;
     padding: 15px;
-    font-family: "Red Hat Display", sans-serif; /* Apply Red Hat font to all links */
+    font-family: "Red Hat Display", sans-serif; 
 }
 
 a:hover {
@@ -58,9 +58,10 @@ a:hover {
 
 .welcome-message {
     margin-top: 20px;
-    margin-left: 1600px;
-    font-weight: bold;
-    color: #520a0a; /* Adjust this to your preferred color */
+    margin-left: 1600px; /* Adjust as needed for proper alignment */
+    color: rgb(161, 162, 131); 
+    font-family: "Red Hat Display", sans-serif; /* Ensure font is applied */
+    font-size: 24px; /* Adjust font size as needed */
 }
 
 h1 {
@@ -71,17 +72,16 @@ h1 {
     padding: 10px 20px;
     font-size: 16px;
     color: white;
-    background-color: #2f00ff; /* Customize the button color */
+    background-color: #2f00ff;
     border: none;
     border-radius: 4px;
     cursor: pointer;
     transition: background-color 0.3s ease;
-    width: auto; /* Ensures the button is not full-width */
-    height: 20px; /* Adjust height as needed */
-    margin: 20px; /* Space around the button */
+    width: auto;
+    height: 20px;
+    margin: 20px;
 }
 
 .button-mod:hover {
-    background-color: #0056b3; /* Darker color on hover */
+    background-color: #0056b3;
 }
-

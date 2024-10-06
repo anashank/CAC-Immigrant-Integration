@@ -2,14 +2,89 @@
 
 {% block content %}
     <div class="container">
-        <div class="sidebar"></div>
+        <div class="sidebar">
+            <div class="sidebar-image"></div>
+        </div>
 
         <div class="content">
             <br></br>
             <h2>{% if form.instance.pk %}Edit Profile{% else %}New Account Set Up{% endif %}</h2>
             <form id="profile-form" method="post" class="account-setup-form">
                 {% csrf_token %}
-                <!-- Your existing form fields here -->
+                <div class="form-group">
+                    <label for="age">Current Age*:</label>
+                    <input type="number" id="age" name="age" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="county">County of Residence (ex. Mendocino, Los Angeles, etc)*:</label>
+                    <input type="text" id="county" name="county" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="country">Country of Origin*:</label>
+                    <input type="text" id="country" name="country" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="income">Income Level*:</label>
+                    <select id="income" name="income" required>
+                        <option value=""></option>
+                        <option value="lower">Less than or equal to $30,000</option>
+                        <option value="lower-middle">$30,001 - $59,000</option>
+                        <option value="middle">$59,001 - $95,000</option>
+                        <option value="upper-middle">$95,001 - $155,000</option>
+                        <option value="upper">Greater than $155,000</option>
+                        <option value="undisclosed">Choose not to disclose</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="cstatus">Current US Citizenship Status*:</label>
+                    <select id="cstatus" name="cstatus" required>
+                        <option value=""></option>
+                        <option value="citizen">US Citizens (born in the US/naturalized)</option>
+                        <option value="cond_perm">Conditional/Permanent Residents (Green Card)</option>
+                        <option value="non-imm">Non-Immigrant Status (F-1 Visa, B1/B2 Visa, or other temporary protected statuses)</option>
+                        <option value="undoc">Undocumented</option>
+                        <option value="undisclosed1">Choose not to disclose</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="education">Highest Level of Education*:</label>
+                    <select id="education" name="education" required>
+                        <option value=""></option>
+                        <option value="high_school">High School</option>
+                        <option value="associate">Associate Degree</option>
+                        <option value="bachelor">Bachelor's Degree</option>
+                        <option value="master">Master's Degree</option>
+                        <option value="doctorate">Doctorate Degree</option>
+                        <option value="other">Other</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="marital">Marital Status*:</label>
+                    <select id="marital" name="marital" required>
+                        <option value=""></option>
+                        <option value="single">Single</option>
+                        <option value="married">Married</option>
+                        <option value="divorced">Divorced</option>
+                        <option value="widowed">Widowed</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="goals">What are your personal goals with this app?</label>
+                    <select id="goals" name="goals">
+                        <option value=""></option>
+                        <option value="developing">Developing an overall understanding of the United States</option>
+                        <option value="learning">Learning which documents are necessary for residence</option>
+                        <option value="understanding">Understanding my legal and civil rights</option>
+                        <option value="other">Other</option>
+                    </select>
+                </div>
 
                 <input type="submit" value="Submit" class="submit-button">
             </form>
@@ -21,14 +96,6 @@
                 </div>
             </div>
 
-            <!-- Messages -->
-            <div class="messages mt-3">
-                {% for message in messages %}
-                    <div class="alert alert-success" role="alert">
-                        {{ message }}
-                    </div>
-                {% endfor %}
-            </div>
         </div>
     </div>
 
@@ -52,29 +119,23 @@
                     'X-Requested-With': 'XMLHttpRequest',
                     'X-CSRFToken': form.querySelector('[name="csrfmiddlewaretoken"]').value
                 }
-            }).then(response => response.json()) // Expect JSON response
-            .then(data => {
+            }).then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.json(); // Expect JSON response
+            }).then(data => {
+                console.log(data); // Log data for debugging
                 if (data.success) {
-                    // Update the messages section
-                    const messagesDiv = document.querySelector('.messages');
-                    messagesDiv.innerHTML = `<div class="alert alert-success" role="alert">${data.message}</div>`;
-                    
-                    // Hide the spinner
-                    document.getElementById('spinner').classList.add('d-none');
-                    
-                    // Redirect to the timeline page
+                    // Redirect if successful
                     window.location.href = '/timeline/'; // Update this with your actual timeline URL
                 } else {
-                    // Update the messages section with an error message
+                    // Handle errors
                     const messagesDiv = document.querySelector('.messages');
                     messagesDiv.innerHTML = `<div class="alert alert-danger" role="alert">${data.message}</div>`;
-                    
-                    // Hide the spinner
-                    document.getElementById('spinner').classList.add('d-none');
                 }
             }).catch(error => {
                 console.error('Error:', error);
-                document.getElementById('spinner').classList.add('d-none');
             });
         }, 5000); // 5 seconds delay
     });

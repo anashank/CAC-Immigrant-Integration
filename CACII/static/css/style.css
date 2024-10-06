@@ -20,16 +20,27 @@ body {
 
 .sidebar {
     width: 50%;
-    background-color: #144231;
+    display: flex;
+    flex-direction: column;
+}
+
+.sidebar-image {
     background-image: url('/static/bar.png');
     background-size: cover;
     background-position: center;
-    background-repeat: no-repeat;
-    height: 100vh;
-    margin: 0;
-    padding: 0;
+    height: 100%; /* Takes half the sidebar */
 }
 
+.spinner {
+    position: absolute; /* Make it absolute */
+    top: 50%; /* Center vertically */
+    justify-content: center;
+    left: 50%; /* Center horizontally */
+    transform: translate(-50%, -50%); /* Adjust position */
+    z-index: 10; /* Ensure it is on top */
+}
+
+/* Ensure the content has relative positioning */
 .content {
     flex: 1;
     padding: 80px;
@@ -38,7 +49,9 @@ body {
     justify-content: center;
     max-width: 500px;
     margin: 0;
+    position: relative; /* Allow absolute positioning of spinner */
 }
+
 
 h2 {
     font-family: "Red Hat Display", sans-serif;
@@ -71,39 +84,31 @@ h2 {
     padding: 10px;
     border: 1px solid #cccccc;
     border-radius: 5px;
-    width: 150%; /* Adjusted to 75% of previous width */
+    width: 100%; /* Adjusted to fill available width */
     box-sizing: border-box;
     background-color: #fff;
 }
 
-.form-group input[type="text"]:focus,
-.form-group input[type="number"]:focus,
-.form-group input[type="email"]:focus,
-.form-group input[type="password"]:focus,
-.form-group input[type="city"]:focus,
-.form-group select:focus {
+.form-group input:focus {
     border-color: #144231;
     outline: none;
 }
 
-.submit-button,
-.register-button {
+.submit-button {
     background-color: #144231;
     border: none;
     color: white;
-    padding: 8px 15px; /* Reduced padding */
+    padding: 10px 20px; /* Increased padding */
     text-align: center;
     display: inline-block;
-    font-size: 0.9rem; /* Reduced font size */
+    font-size: 1rem; /* Adjusted font size */
     cursor: pointer;
     border-radius: 5px;
     margin-top: 10px;
     text-transform: uppercase;
-    font-family: "Open Sans", sans-serif;
 }
 
-.submit-button:hover,
-.register-button:hover {
+.submit-button:hover {
     background-color: #0f3c28;
 }
 
@@ -115,6 +120,7 @@ p {
     margin-top: 25px;
     font-size: 0.8rem;
 }
+
 
 @media (max-width: 1200px) {
     h2 {
