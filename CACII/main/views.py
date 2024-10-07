@@ -117,29 +117,38 @@ def profile_view(request):
 
     return render(request, 'profile_form.html', {'form': form})
 
+def format_module_title(module_name):
+    parts = module_name.split("-")
+    formatted_parts = []
+    for part in parts:
+        if part.lower() in ['and', 'or', 'but', 'nor', 'for', 'so', 'yet']:  # Add other conjunctions as needed
+            formatted_parts.append(part.lower())
+        else:
+            formatted_parts.append(part.capitalize())
+    return " ".join(formatted_parts)
+
 def preview(request):
     context = {}
     if "module" in request.GET:
         context["module"] = request.GET.get("module")
-        context["module_title"] = " ".join(request.GET.get("module").split("-")).title()
+        context["module_title"] = format_module_title(context["module"])
     return render(request, "preview.html", context)
-
 
 def module(request):
     context = {}
     if "module" in request.GET:
         context["module"] = request.GET.get("module")
-        context["module_title"] = " ".join(request.GET.get("module").split("-")).title()
+        context["module_title"] = format_module_title(context["module"])
         context["module_file_name"] = context["module"] + ".pdf"
         request.session['module_file_name'] = context["module_file_name"]
 
-        # Extract headers
-        file_name = context['module_file_name']  # Adjust the path as necessary
+        file_name = context['module_file_name']
         full_pdf_path = finders.find(file_name)
         headers = extract_headers(full_pdf_path)
         context["headers"] = headers
 
     return render(request, "module.html", context)
+
 
 def register_new(request):
     if request.method == 'POST':

@@ -1,16 +1,33 @@
 {% extends 'moduleHeader.html' %}
 {% load static %}
-
+    <style>
+        .article-header {
+            margin-bottom: 60px; /* Adjust the spacing as needed */
+        }
+    </style>
 {% block content %}
 <!-- 
 <p>temp module content</p>
 <a href="{%url 'preview'%}?module={{module}}">to preview</a> -->
 
 <aside class="sidebar" id="module-side-bar">
-    <h4>Articles in this Module:</h4>
+    <h4>Articles in this module:</h4>
+    <ul class="link-list">
+        {% for header, page_number in headers %}
+            <li class="article-header">
+                <a href="#" class="page-link" data-page="{{ page_number }}">{{ header }}</a>
+            </li>
+        {% endfor %}
+    </ul>
 </aside>
 
 <section id="content">
+    <div id="pdf-container" style="overflow-y: auto; height: 600px;">
+        <canvas id="pdf-canvas" width="100%"></canvas>
+    </div>
+    <div>
+        Page: <span id="page_num">1</span> / <span id="page_count">1</span>
+    </div>
     <embed src="{% static module_file_name %}" width="100%" height="100%">
 </section>
 
@@ -30,15 +47,63 @@
             </li>
         </ul>
         <div class="chat-input">
-            <textarea rows="0" cols="17"
-                        placeholder="Enter a message..."></textarea>
+            <textarea rows="0" cols="17" placeholder="Enter a message..."></textarea>
             <button id="sendBTN">Send</button>
         </div>
     </div>
     <script src="{% static 'js/script.js' %}" defer></script>
 </aside>
-
-    <!-- <object data="{% static module_file_name %}" type="application/pdf" width="500" height="1000">
-        <p>Your browser does not support PDFs. <a href="path/to/your/pdf-file.pdf">Download the PDF</a>.</p>
-    </object> -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.10.377/pdf.min.js"></script>
+<script>
+    const url = "{% static module_file_name %}";
+    let pdfDoc = null,
+        pageNum = 1,
+        pageIsRendering = false,
+        pageNumIsPending = null;
+    const renderPage = num => {
+        pageIsRendering = true;
+        pdfDoc.getPage(num).then(page => {
+            const canvas = document.getElementById('pdf-canvas');
+            const ctx = canvas.getContext('2d');
+            const viewport = page.getViewport({ scale: 1.3 });
+            canvas.height = viewport.height;
+            canvas.width = viewport.width;
+            const renderCtx = {
+                canvasContext: ctx,
+                viewport: viewport
+            };
+            page.render(renderCtx).promise.then(() => {
+                pageIsRendering = false;
+                if (pageNumIsPending !== null) {
+                    renderPage(pageNumIsPending);
+                    pageNumIsPending = null;
+                }
+            });
+        });
+        document.getElementById('page_num').textContent = num;
+    };
+    const goToPage = num => {
+        if (pageIsRendering) {
+            pageNumIsPending = num;
+        } else {
+            pageNum = num;
+            renderPage(pageNum);
+        }
+    };
+    pdfjsLib.getDocument(url).promise.then(pdfDoc_ => {
+        pdfDoc = pdfDoc_;
+        document.getElementById('page_count').textContent = pdfDoc.numPages;
+        renderPage(pageNum);
+    });
+    document.addEventListener('DOMContentLoaded', function () {
+        const links = document.querySelectorAll('.page-link');
+        links.forEach(link => {
+            link.addEventListener('click', function(event) {
+                event.preventDefault();
+                const pageNumber = parseInt(this.getAttribute('data-page'));
+                goToPage(pageNumber);
+            });
+        });
+    });
+</script>
 {%endblock%}
