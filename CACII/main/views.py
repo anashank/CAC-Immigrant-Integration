@@ -1,4 +1,5 @@
 import PyPDF2
+import pdfplumber
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.http import JsonResponse
@@ -13,8 +14,20 @@ from django.urls import reverse
 from django.contrib.staticfiles import finders
 
 
+        
+
+
 def extract_headers(pdf_path):
     headers = []
+    # with pdfplumber.open(pdf_path) as pdf:
+    #     first_page = pdf.pages[0]  # Access the first page
+    #     text = first_page.extract_text().split("\n")[0]
+    #     print(text)
+    #     for page_number,page in enumerate(pdf.pages):
+    #         title = page.extract_text().split("\n")[0]
+    #         title_info = page.chars
+    #         if "Bold" in title_info[0].get("fontname"):
+    #             headers.append((title,page_number + 1))
     with open(pdf_path, 'rb') as file:
         reader = PyPDF2.PdfReader(file)
         for page_number, page in enumerate(reader.pages):
