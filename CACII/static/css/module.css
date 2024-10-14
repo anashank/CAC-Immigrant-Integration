@@ -12,11 +12,13 @@
 }
 
 .article-header {
-    margin-bottom: 30px; /* Space between each link */
+    margin-bottom: 30px;
+    margin-top: 20px;
+    margin-left: 10px;
 }
 
 #moduleHeaderName {
-    height: 100%;
+    height: 70%;
     background-color: #334536;
     display: flex;
     justify-content: center;
@@ -24,12 +26,17 @@
 }
 
 #content {
-    width: 50%; 
+    width: 60%; 
+    margin-right:-50px;
+}
+
+#module-side-bar {
+    margin-right: 50px;
 }
 
 #pdf-container {
-    width: 80%; /* Reduce the width if you want it narrower */
-    margin-left:60px; /* This moves the PDF window to the right */
+    width: 80%; 
+    margin-left:60px;
     height: 1500px;
     overflow-y: auto;
 }
@@ -47,10 +54,8 @@ main {
     width: 25%;
 }
 
-
-
 header {
-    height: 35%;
+    height: 30%;
     display: flex;
     flex-direction: column;
     color: #ffffff;
@@ -59,4 +64,5 @@ header {
 h4 {
     text-align: center;
     font-weight: normal;
+    margin-top: 15px;
 }

@@ -2,7 +2,7 @@
 {% load static %}
     <style>
         .article-header {
-            margin-bottom: 60px; /* Adjust the spacing as needed */
+            margin-bottom: 60px; 
         }
     </style>
 {% block content %}
@@ -11,7 +11,7 @@
 <a href="{%url 'preview'%}?module={{module}}">to preview</a> -->
 
 <aside class="sidebar" id="module-side-bar">
-    <h4>Articles in this module:</h4>
+    <h4>Articles in this Module:</h4>
     <ul class="link-list">
         {% for header, page_number in headers %}
             <li class="article-header">
@@ -28,7 +28,6 @@
     <div>
         Page: <span id="page_num">1</span> / <span id="page_count">1</span>
     </div>
-    <embed src="{% static module_file_name %}" width="100%" height="100%">
 </section>
 
 <aside class="sidebar" id="chat-bot-side-bar">

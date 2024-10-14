@@ -28,19 +28,18 @@ body {
     background-image: url('/static/bar.png');
     background-size: cover;
     background-position: center;
-    height: 100%; /* Takes half the sidebar */
+    height: 100%; 
 }
 
 .spinner {
-    position: absolute; /* Make it absolute */
-    top: 50%; /* Center vertically */
+    position: absolute;
+    top: 50%;
     justify-content: center;
-    left: 50%; /* Center horizontally */
-    transform: translate(-50%, -50%); /* Adjust position */
-    z-index: 10; /* Ensure it is on top */
+    left: 50%; 
+    transform: translate(-50%, -50%);
+    z-index: 10; 
 }
 
-/* Ensure the content has relative positioning */
 .content {
     flex: 1;
     padding: 80px;
@@ -49,7 +48,7 @@ body {
     justify-content: center;
     max-width: 500px;
     margin: 0;
-    position: relative; /* Allow absolute positioning of spinner */
+    position: relative;
 }
 
 
@@ -84,7 +83,7 @@ h2 {
     padding: 10px;
     border: 1px solid #cccccc;
     border-radius: 5px;
-    width: 100%; /* Adjusted to fill available width */
+    width: 100%;
     box-sizing: border-box;
     background-color: #fff;
 }
@@ -98,10 +97,10 @@ h2 {
     background-color: #144231;
     border: none;
     color: white;
-    padding: 10px 20px; /* Increased padding */
+    padding: 10px 20px;
     text-align: center;
     display: inline-block;
-    font-size: 1rem; /* Adjusted font size */
+    font-size: 1rem;
     cursor: pointer;
     border-radius: 5px;
     margin-top: 10px;

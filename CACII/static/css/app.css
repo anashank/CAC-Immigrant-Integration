@@ -58,10 +58,10 @@ a:hover {
 
 .welcome-message {
     margin-top: 20px;
-    margin-left: 1600px; /* Adjust as needed for proper alignment */
+    margin-left: 1600px; 
     color: rgb(161, 162, 131); 
-    font-family: "Red Hat Display", sans-serif; /* Ensure font is applied */
-    font-size: 24px; /* Adjust font size as needed */
+    font-family: "Red Hat Display", sans-serif; 
+    font-size: 24px; 
 }
 
 h1 {

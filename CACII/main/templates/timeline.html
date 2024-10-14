@@ -42,7 +42,7 @@
             align-items: flex-start;
             padding: 20px;
             text-align: center;
-            margin-top: 100px; /* Move everything down */
+            margin-top: 100px; 
         }
 
         #description {
@@ -111,7 +111,7 @@
         button {
             padding: 10px 20px;
             font-size: 16px;
-            margin: 20px 0; /* Center button with margin */
+            margin: 20px 0; 
             border-radius: 5px;
             cursor: pointer;
             background-color: rgb(41, 45, 36);
@@ -144,7 +144,7 @@
                 <div class="module-row">
                     <input type="checkbox" name="module_complete_rights" id="module_rights" {% if modules.rights.is_complete %}checked{% endif %}>
                     <label for="module_rights">
-                        <a class="curriculum {% if modules.rights.is_complete %}completed{% else %}incomplete{% endif %}" href="{% url 'preview' %}?module=rights-and-responsibilities">
+                        <a class="curriculum {% if modules.rights.is_complete %}completed{% else %}incomplete{% endif %}" href="{% url 'module' %}?module=rights-and-responsibilities">
                             Rights and Responsibilities
                         </a>
                     </label>
@@ -152,7 +152,7 @@
                 <div class="module-row">
                     <input type="checkbox" name="module_complete_documentation" id="module_documentation" {% if modules.documentation.is_complete %}checked{% endif %}>
                     <label for="module_documentation">
-                        <a class="curriculum {% if modules.documentation.is_complete %}completed{% else %}incomplete{% endif %}" href="{% url 'preview' %}?module=documentation">
+                        <a class="curriculum {% if modules.documentation.is_complete %}completed{% else %}incomplete{% endif %}" href="{% url 'module' %}?module=documentation">
                             Documentation
                         </a>
                     </label>
@@ -160,7 +160,7 @@
                 <div class="module-row">
                     <input type="checkbox" name="module_complete_financial" id="module_financial" {% if modules.financial.is_complete %}checked{% endif %}>
                     <label for="module_financial">
-                        <a class="curriculum {% if modules.financial.is_complete %}completed{% else %}incomplete{% endif %}" href="{% url 'preview' %}?module=financial">
+                        <a class="curriculum {% if modules.financial.is_complete %}completed{% else %}incomplete{% endif %}" href="{% url 'module' %}?module=financial">
                             Financial
                         </a>
                     </label>
@@ -168,7 +168,7 @@
                 <div class="module-row">
                     <input type="checkbox" name="module_complete_practical" id="module_practical" {% if modules.practical.is_complete %}checked{% endif %}>
                     <label for="module_practical">
-                        <a class="curriculum {% if modules.practical.is_complete %}completed{% else %}incomplete{% endif %}" href="{% url 'preview' %}?module=practical-needs">
+                        <a class="curriculum {% if modules.practical.is_complete %}completed{% else %}incomplete{% endif %}" href="{% url 'module' %}?module=practical-needs">
                             Practical Needs
                         </a>
                     </label>
@@ -176,7 +176,7 @@
                 <div class="module-row">
                     <input type="checkbox" name="module_complete_cultural" id="module_cultural" {% if modules.cultural.is_complete %}checked{% endif %}>
                     <label for="module_cultural">
-                        <a class="curriculum {% if modules.cultural.is_complete %}completed{% else %}incomplete{% endif %}" href="{% url 'preview' %}?module=cultural-integration">
+                        <a class="curriculum {% if modules.cultural.is_complete %}completed{% else %}incomplete{% endif %}" href="{% url 'module' %}?module=cultural-integration">
                             Cultural Integration
                         </a>
                     </label>
